@@ -1,4 +1,5 @@
 import sys
+from os import kill
 
 import pygame
 
@@ -55,8 +56,18 @@ def main():
                 log_event("player_hit")
                 #print a message
                 print("Game over!")
-                # quit game
+                # quit gamee
                 sys.exit()
+
+        for asteroid in asteroids:
+            for shot in shots:
+                if shot.collides_with(asteroid):
+                    print("HIT")
+                    log_event("asteroid_shot")
+                    shot.kill()
+                    asteroid.kill()
+
+
 
         screen.fill("black")
         updatable.update(dt)

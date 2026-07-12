@@ -16,6 +16,7 @@ class Shot(CircleShape):
 
     def update(self, dt: float) -> None:
 
-        self.position += self.velocity
+        self.position += self.velocity * dt
+
         print("position:", self.position.x, self.position.y)
 
