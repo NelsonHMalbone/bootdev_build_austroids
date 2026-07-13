@@ -3,12 +3,11 @@ from os import kill
 
 import pygame
 
-from logger import log_event
+from logger import log_event, log_state
 from asteroidfield import AsteroidField
 from asteroid import Asteroid
 from shot import Shot
 from constants import SCREEN_WIDTH, SCREEN_HEIGHT
-from logger import log_state
 from player import Player
 
 def main():
@@ -45,6 +44,7 @@ def main():
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     player = Player(SCREEN_WIDTH/2, SCREEN_HEIGHT/2)
     asteroid_field = AsteroidField()
+
     while True:
         log_state()
         for event in pygame.event.get():
@@ -65,7 +65,7 @@ def main():
                     print("HIT")
                     log_event("asteroid_shot")
                     shot.kill()
-                    asteroid.kill()
+                    asteroid.split()
 
 
 
